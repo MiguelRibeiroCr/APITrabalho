@@ -1,4 +1,5 @@
-import { Column, PrimaryGeneratedColumn, Entity, PrimaryColumn } from "typeorm";
+import { Column, PrimaryGeneratedColumn, Entity, PrimaryColumn, OneToMany } from "typeorm";
+import { Task } from "src/task/entities/task.entity";
 
 @Entity()
 export class User {
@@ -21,5 +22,7 @@ export class User {
     @Column()
     profilePictureURL:string;
  
+    @OneToMany(() => Task, (task) => task.user)
+    tasks:Task[];
 
 }
